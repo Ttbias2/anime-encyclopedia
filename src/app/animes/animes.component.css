@@ -1,0 +1,11 @@
+#container{
+    border: black solid 1px;
+}
+
+#containerAnimes{
+    background-color: blue;
+    padding: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}

@@ -1,0 +1,43 @@
+@for (a of anime; track a.mal_id) {
+    @if (a.title==animeTittle) {
+        <div>
+            <div>
+                <div>
+                    <img src="{{a.images.jpg.large_image_url}}" alt="Can't load the image">
+                    <p>{{a.title}}</p>
+                </div>
+                <div>
+                    <div>
+                        <p>Producer: {{a.producers}}</p>
+                        <p>Episodes: {{a.episodes}}</p>
+                        <p>Duration: {{a.duration}}</p>
+                        <p>Genres: {{a.genres}}</p>
+                        <p>Score: {{a.score}}</p>
+                        <p>Status: {{a.status}}</p>
+                        <p>Rating: {{a.rating}}</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p>Synopsis</p>
+                <p>{{a.synopsis}}</p>
+            </div>
+            <div>
+                <p>Trailer</p>
+                <video width="320px" height="180px" controls preload="auto">
+                    <source src="{{a.trailer.url}}" type="video/mp4">
+                    Tu navegador no soporta videos en este formato.
+                </video>
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+        </div>
+    }
+}

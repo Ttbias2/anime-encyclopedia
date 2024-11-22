@@ -1,0 +1,12 @@
+<div id="container">
+    <div id="containerAnimes" class="flexRow">
+        @for (anime of animes; track anime.mal_id) {
+        <div class="anime" routerLink="/anime/{{anime.title}}">
+            <img src="{{anime.images.jpg.image_url}}" alt="Can't find the image">
+            <p>{{anime.title}}</p>
+        </div>
+        }
+    </div>
+    <button (click)="nextPage()">mas animes</button>
+    <button (click)="previusPage()">menos animes</button>
+</div>
