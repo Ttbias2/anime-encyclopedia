@@ -1,0 +1,51 @@
+.flexrow{
+    display: flex;
+    overflow-x: scroll;
+}
+
+.character:hover{
+    cursor: default;
+}
+
+#container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #1c0e24;
+    margin-block: 25px;
+    border-radius: 15px;
+    padding: 10px;
+    width: 1200px;
+    text-align: center;
+}
+
+#animeSpc{
+    display: flex;
+    flex-direction: row;
+}
+
+#animeSpc img{
+    height: 500px;
+}
+
+#specifications{
+    margin-left: 20px;
+    text-align:start;
+}
+
+
+#recommendations{
+    font-size: 15px;
+    margin-bottom: 10px;
+    background-color: #341d41;
+}
+
+.base{
+    width: 1000px;
+    padding: 15px;
+    margin-block: 10px;
+    border-radius: 15px;
+    font-size: 25px;
+    background-color: #281731;
+}

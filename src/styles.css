@@ -1,4 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'general';
+    src: url('./assets/fonts/ProtestRevolution-Regular.ttf');
+}
+
+
 html,
 body {
     margin: 0;
@@ -6,6 +12,9 @@ body {
     height: 100%;
     width: 100%;
     box-sizing: border-box;
+    font-family:'general';
+    background-color: #140620;
+    color: rgb(214, 205, 205);
 }
 
 .anime {
@@ -15,14 +24,24 @@ body {
     justify-content: flex-start;
     width: 250px;
     height: 420px;
-    background-color: burlywood;
     border: black solid 1px;
     margin-top: 10px;
     margin-inline: 5px;
+    border-radius: 10px;
+    background-color: #281731;
 }
 
 .anime:hover{
     cursor: pointer;
+}
+
+button{
+    font-family:'general';
+    color: rgb(214, 205, 205);
+    background-color: #30124b;
+    border: none;
+    width: 75px;
+    height: 40px;
 }
 
 button:hover{
@@ -32,6 +51,7 @@ button:hover{
 .anime img {
     width: 250px;
     height: 350px;
+    border-radius: 9px;
 }
 
 .anime p {

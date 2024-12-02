@@ -1,43 +1,69 @@
+<div style="display: flex; align-items: center; justify-content: center;">
 @for (a of anime; track a.mal_id) {
-    @if (a.title==animeTittle) {
+@if (a.title==animeTittle) {
+<div id="container">
+    <p style="font-size: 75px;">{{a.title}}</p>
+    <div id="animeSpc" class="base">
         <div>
+            <img src="{{a.images.jpg.large_image_url}}" alt="Can't load the image">
+        </div>
+        <div id="specifications">
             <div>
-                <div>
-                    <img src="{{a.images.jpg.large_image_url}}" alt="Can't load the image">
-                    <p>{{a.title}}</p>
+                <p><strong>Producer:</strong> {{a.producers[0].name}}</p>
+                <p><strong>Episodes:</strong> {{a.episodes}}</p>
+                <p><strong>Duration:</strong> {{a.duration}}</p>
+                <div style="display: flex; margin: 0; align-items: center;">
+                    <span><strong>Genres:&nbsp;</strong></span>
+                    @for (genre of a.genres; track genre.mal_id) {
+                        <span>{{genre.name}}&nbsp;</span>
+                    }
                 </div>
-                <div>
-                    <div>
-                        <p>Producer: {{a.producers}}</p>
-                        <p>Episodes: {{a.episodes}}</p>
-                        <p>Duration: {{a.duration}}</p>
-                        <p>Genres: {{a.genres}}</p>
-                        <p>Score: {{a.score}}</p>
-                        <p>Status: {{a.status}}</p>
-                        <p>Rating: {{a.rating}}</p>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <p>Synopsis</p>
-                <p>{{a.synopsis}}</p>
-            </div>
-            <div>
-                <p>Trailer</p>
-                <video width="320px" height="180px" controls preload="auto">
-                    <source src="{{a.trailer.url}}" type="video/mp4">
-                    Tu navegador no soporta videos en este formato.
-                </video>
-            </div>
-            <div>
-
-            </div>
-            <div>
-
-            </div>
-            <div>
-
+                <p><strong>Score:</strong> {{a.score}}</p>
+                <p><strong>Status:</strong> {{a.status}}</p>
+                <p><strong>Rating:</strong> {{a.rating}}</p>
             </div>
         </div>
-    }
+    </div>
+    <div class="base">
+        <p>Synopsis</p>
+        <p>{{a.synopsis}}</p>
+    </div>
+    <div class="base">
+        <p>Trailer</p>
+        <iframe width="1000" height="567"
+            [src]="sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + a.trailer.youtube_id)"
+            title="YouTube video player" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="base">
+        <div class="flexrow">
+            @for (character of characters; track character.character.mal_id) {
+
+            <div class="anime character">
+                <img src="{{character.character.images.jpg.image_url}}" alt="Can't get the image">
+                <p>{{character.character.name}}</p>
+            </div>
+
+            }
+        </div>
+
+    </div>
+    <div class="base">
+        <p>recommendations</p>
+        <div class="flexrow">
+            @for (a of anime; track a.mal_id) {
+            @if(a.title!=animeTittle){
+            <div class="anime" id="recommendations" routerLink="/anime/{{a.title}}/{{a.mal_id}}" (click)="animeService.getCharacters(a.mal_id)">
+                <img src="{{a.images.jpg.image_url}}" alt="Can't get the image">
+                <p>{{a.title}}</p>
+            </div>
+            }
+
+            }
+        </div>
+    </div>
+</div>
 }
+}
+</div>

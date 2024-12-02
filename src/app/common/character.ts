@@ -1,61 +1,40 @@
-interface CharacterImage {
-    jpg: {
-      image_url: string;
-      small_image_url?: string;
-      large_image_url?: string;
-    };
-    webp: {
-      image_url: string;
-      small_image_url?: string;
-      large_image_url?: string;
-    };
-  }
-  
-  interface Anime {
-    role: string;
-    anime: {
-      mal_id: number;
-      url: string;
-      images: CharacterImage;
-      title: string;
-    };
-  }
-  
-  interface Manga {
-    role: string;
-    manga: {
-      mal_id: number;
-      url: string;
-      images: CharacterImage;
-      title: string;
-    };
-  }
-  
-  interface VoiceActor {
-    person: {
-      mal_id: number;
-      url: string;
-      images: {
-        jpg: {
-          image_url: string;
-        };
-      };
-      name: string;
-    };
-    language: string;
-  }
-  
-  interface CharacterData {
-    mal_id: number;
-    url: string;
-    images: CharacterImage;
-    name: string;
-    name_kanji: string;
-    nicknames: string[];
-    favorites: number;
-    about: string;
-    anime: Anime[];
-    manga: Manga[];
-    voices: VoiceActor[];
-  }
-  
+// Interface for the entire API response
+export interface ApiResponse {
+  data: CharacterData[];
+}
+
+// Interface for each character data entry
+export interface CharacterData {
+  character: CharacterDetails;
+  role: string;
+  favorites: number;
+  voice_actors: VoiceActor[];
+}
+
+// Interface for character details
+interface CharacterDetails {
+  mal_id: number;
+  name: string;
+  url: string;
+  images: CharacterImages;
+}
+
+// Interface for character images
+interface CharacterImages {
+  jpg: { image_url: string };
+  webp: { image_url: string; small_image_url: string };
+}
+
+// Interface for voice actor data
+interface VoiceActor {
+  person: VoiceActorDetails;
+  language: string;
+}
+
+// Interface for voice actor details
+interface VoiceActorDetails {
+  mal_id: number;
+  name: string;
+  url: string;
+  images: { jpg: { image_url: string } };
+}

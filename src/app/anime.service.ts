@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AnimeData, AnimeResponse } from './common/anime'
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
+import { ApiResponse,CharacterData } from './common/character';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,9 @@ import { BehaviorSubject, map, Observable } from 'rxjs';
 export class AnimeService {
 
   topUrl: string = "https://api.jikan.moe/v4/top/anime?limit=5"
-  baseUrl: string = "https://api.jikan.moe/v4/anime?order_by=popularity&&limit=20&&page="
+  animesUrl: string = "?order_by=popularity&&limit=20&&page="
   animeUrl: string = "https://api.jikan.moe/v4/anime?"
+  baseUrl:string = "https://api.jikan.moe/v4/anime"
   status: string = ""
   genres: string = ""
   type: string = ""
@@ -19,22 +21,26 @@ export class AnimeService {
   private animes = new BehaviorSubject<AnimeData[]>([]);
   animes$ = this.animes.asObservable();
 
+  private characters = new BehaviorSubject<CharacterData[]>([]);
+  characters$ = this.characters.asObservable();
+
   private anime = new BehaviorSubject<AnimeData[]>([]);
-  anime$ = this.animes.asObservable();
+  anime$ = this.anime.asObservable();
 
   private topAnimes = new BehaviorSubject<AnimeData[]>([]);
   topAnimes$ = this.topAnimes.asObservable();
 
+
   constructor(private httpclient: HttpClient) { }
 
   getAnimes(page: number) {
-    this.httpclient.get<AnimeResponse>(`${this.baseUrl}${page}&&status=${this.status}&&type=${this.type}&&genres=${this.genres}&&q=${this.name}`).subscribe(result => {
+    this.httpclient.get<AnimeResponse>(`${this.baseUrl}${this.animesUrl}${page}&&status=${this.status}&&type=${this.type}&&genres=${this.genres}&&q=${this.name}`).subscribe(result => {
       this.animes.next(result.data);
     });
   }
 
   getAnime(name:string) {
-    this.httpclient.get<AnimeResponse>(`${this.animeUrl}q=${name}`).subscribe(result => {
+    this.httpclient.get<AnimeResponse>(`${this.animeUrl}q=${name}&&limit=6`).subscribe(result => {
       this.anime.next(result.data);
     });
   }
@@ -62,5 +68,12 @@ export class AnimeService {
     this.genres = "";
     this.getAnimes(1);
   }
+
+  getCharacters(animeId:Number) {
+    this.httpclient.get<ApiResponse>(`${this.baseUrl}/${animeId}/characters`).subscribe(result => {
+      this.characters.next(result.data);
+    });
+  }
+
 
 }

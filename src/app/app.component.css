@@ -1,15 +1,21 @@
 nav {
     height: 20%;
     width: 100%;
-    background-color: aqua;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-color: #1c0e24;
+    border-bottom-left-radius:10px ;
+    border-bottom-right-radius:15px ;
 }
 
 h1 {
     margin: 0;
+}
+
+label{
+    font-size: 15px;
 }
 
 #filt {
@@ -22,6 +28,9 @@ h1 {
     padding: 5px;
     position: absolute;
     transition: transform 0.3s ease;
+    background-color: #281731;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 #genres{
@@ -30,6 +39,7 @@ h1 {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
+    border-top-right-radius: 15px;
 }
 
 #genres label{
@@ -42,4 +52,8 @@ h1 {
 
 .visible{
     transform: scale(1);
+}
+
+input{
+    font-family: 'general';
 }

@@ -4,6 +4,6 @@ import { AnimeComponent } from './anime/anime.component';
 
 export const routes: Routes = [
     {path:'home',component:HomepageComponent},
-    {path:'anime/:tittle',component:AnimeComponent},
+    {path:'anime/:tittle/:id',component:AnimeComponent},
     {path:'',redirectTo:'/home',pathMatch:'full'}
 ];
