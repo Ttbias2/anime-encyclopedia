@@ -1,6 +1,7 @@
 <nav>
     <h1>ANIME ENCYCLOPEDIA</h1>
     <div id="filt">
+        <button  style="font-size: 35px;" (click)="clear()">&times;</button>
         <button (click)="filter()">filter</button>
         <div class="flexcolum">
             <button (click)="changeState(1)">Genres</button>
@@ -102,7 +103,10 @@
                 <label><input type="radio" name="type" value="special"> Special<br></label>
             </div>
         </div>
-        <input type="text" name="" id="name" (keydown)="byName($event)">
+        <div id="fetch">
+            <input type="text" name="" id="name" (keydown)="byName($event)" placeholder="Anime name">
+            <button style="font-size: 20px;" id="text" (click)="fetch()">🔍</button>
+        </div>
     </div>
 </nav>
 <router-outlet></router-outlet>

@@ -109,4 +109,25 @@ export class AppComponent {
     
   }
 
+  clear() {
+    const inputs = document.querySelectorAll('input[type="checkbox"], input[type="radio"]');
+
+    inputs.forEach(input => {
+      (input as HTMLInputElement).checked = false;
+    });
+
+    const name = document.getElementById("name") as HTMLInputElement;
+    if (name) {
+      name.value = "";
+    }
+
+    this.service.byName("");
+  }
+
+  fetch(){
+    let name = document.getElementById("name") as HTMLInputElement;
+
+    this.service.byName(name.value);
+  }
+
 }

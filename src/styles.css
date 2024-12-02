@@ -12,7 +12,7 @@ body {
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-    font-family:'general';
+    font-family: 'general';
     background-color: #140620;
     color: rgb(214, 205, 205);
 }
@@ -31,21 +31,25 @@ body {
     background-color: #281731;
 }
 
-.anime:hover{
+.anime:hover {
     cursor: pointer;
 }
 
-button{
-    font-family:'general';
+button {
+    font-family: 'general';
     color: rgb(214, 205, 205);
-    background-color: #30124b;
+    background-color: #281731;
     border: none;
     width: 75px;
     height: 40px;
+    margin-left: 5px;
+    border-radius: 5px;
+    font-size: 20px;
 }
 
-button:hover{
+button:hover {
     cursor: pointer;
+    background-color: #3b2a46;
 }
 
 .anime img {
@@ -58,4 +62,20 @@ button:hover{
     display: -webkit-box;
     -webkit-box-orient: vertical;
     text-align: center;
+}
+
+.scroll::-webkit-scrollbar {
+    background-color: #1c0e24;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background-color: #341d41;
+}
+
+body::-webkit-scrollbar {
+    background-color:#281731;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #341d41;
 }

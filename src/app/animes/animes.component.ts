@@ -27,8 +27,12 @@ export class AnimesComponent implements OnInit{
 
   nextPage()
   {
-    this.page++;
-    this.service.getAnimes(this.page)
+    if(this.animes.length == 20){
+      this.page++;
+      this.service.getAnimes(this.page)  
+    }
+    
+    this.scrollToTop();
   }
 
   previusPage()
@@ -38,7 +42,16 @@ export class AnimesComponent implements OnInit{
       this.page--;
       this.service.getAnimes(this.page)
     }
+
+    this.scrollToTop();
     
   }
   
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
 }

@@ -35,7 +35,7 @@
 }
 
 
-#recommendations{
+.basechrc{
     font-size: 15px;
     margin-bottom: 10px;
     background-color: #341d41;
@@ -48,4 +48,10 @@
     border-radius: 15px;
     font-size: 25px;
     background-color: #281731;
+}
+
+#back{
+    position: absolute;
+    top: 260px;
+    left: 250px;
 }

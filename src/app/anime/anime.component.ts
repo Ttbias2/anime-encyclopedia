@@ -41,5 +41,13 @@ export class AnimeComponent implements OnInit{
 
     this.animeService.characters$.subscribe((characters)=>{this.characters=characters});
   }
+
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+
 }
 

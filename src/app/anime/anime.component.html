@@ -1,3 +1,4 @@
+<button id="back" routerLink="/home">Back</button>
 <div style="display: flex; align-items: center; justify-content: center;">
 @for (a of anime; track a.mal_id) {
 @if (a.title==animeTittle) {
@@ -37,10 +38,10 @@
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </div>
     <div class="base">
-        <div class="flexrow">
+        <p>characters</p>
+        <div class="flexrow scroll">
             @for (character of characters; track character.character.mal_id) {
-
-            <div class="anime character">
+            <div class="anime character basechrc">
                 <img src="{{character.character.images.jpg.image_url}}" alt="Can't get the image">
                 <p>{{character.character.name}}</p>
             </div>
@@ -51,10 +52,10 @@
     </div>
     <div class="base">
         <p>recommendations</p>
-        <div class="flexrow">
+        <div class="flexrow scroll">
             @for (a of anime; track a.mal_id) {
             @if(a.title!=animeTittle){
-            <div class="anime" id="recommendations" routerLink="/anime/{{a.title}}/{{a.mal_id}}" (click)="animeService.getCharacters(a.mal_id)">
+            <div class="anime basechrc" routerLink="/anime/{{a.title}}/{{a.mal_id}}" (click)="animeService.getCharacters(a.mal_id)" (click)="scrollToTop()">
                 <img src="{{a.images.jpg.image_url}}" alt="Can't get the image">
                 <p>{{a.title}}</p>
             </div>
