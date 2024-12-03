@@ -1,3 +1,4 @@
+
 <div id="container">
     <div id="containerAnimes" class="flexRow">
         @for (anime of animes; track anime.mal_id) {
@@ -5,6 +6,7 @@
             <img src="{{anime.images.jpg.image_url}}" alt="Can't find the image">
             <p>{{anime.title}}</p>
         </div>
+        
         }
     </div>
     <div id="btns">

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { AnimeService } from './anime.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { AnimeService } from './anime.service';
 export class AppComponent {
   title = 'animeEnc';
 
-  constructor(private service: AnimeService) { }
+  constructor(private service: AnimeService, private route: Router) { }
 
   changeState(cv: number) {
 
@@ -86,8 +86,7 @@ export class AppComponent {
     genres.forEach(genre => {
       const inputElement = genre as HTMLInputElement;
 
-      if(genresCount>0)
-      {
+      if (genresCount > 0) {
         genresValues += ",";
       }
       genresValues += inputElement.value;
@@ -95,18 +94,25 @@ export class AppComponent {
 
     });
 
-    this.service.filter(genresValues,typesValue,statusValue)
+    this.service.filter(genresValues, typesValue, statusValue)
+
+    this.route.navigate(['/home'])
+
+    this.scrollToTop();
 
   }
 
-  byName(event:KeyboardEvent){
+  byName(event: KeyboardEvent) {
 
     let name = document.getElementById("name") as HTMLInputElement;
 
-    if(event.key == 'Enter'){
+    if (event.key == 'Enter') {
       this.service.byName(name.value);
+      this.route.navigate(['/home'])
+      name.value = "";
+      this.scrollToTop();
     }
-    
+
   }
 
   clear() {
@@ -122,12 +128,28 @@ export class AppComponent {
     }
 
     this.service.byName("");
+
+    this.route.navigate(['/home'])
+
+    this.scrollToTop();
+
   }
 
-  fetch(){
+  fetch() {
     let name = document.getElementById("name") as HTMLInputElement;
 
     this.service.byName(name.value);
+
+    this.route.navigate(['/home'])
+
+    this.scrollToTop();
+  }
+
+  scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
 }

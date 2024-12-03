@@ -52,6 +52,23 @@
 
 #back{
     position: absolute;
-    top: 260px;
+    position: sticky;
+    top: 233px;
     left: 250px;
+    animation: upside;
+    animation-timeline: scroll(root);
+}
+
+@keyframes upside {
+    0% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-150px);
+    }
+
+    100% {
+        transform: translateY(-150px);
+    }
 }

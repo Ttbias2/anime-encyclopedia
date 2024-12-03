@@ -30,6 +30,9 @@ export class AnimeService {
   private topAnimes = new BehaviorSubject<AnimeData[]>([]);
   topAnimes$ = this.topAnimes.asObservable();
 
+  private page = new BehaviorSubject<number>(1);
+  page$ = this.page.asObservable();
+
 
   constructor(private httpclient: HttpClient) { }
 
@@ -56,8 +59,8 @@ export class AnimeService {
     this.status = status;
     this.type = type;
     this.genres = genres;
-
-    this.getAnimes(1);
+    this.page.next(1);         
+    this.getAnimes(this.page.getValue()) 
 
   }
 
@@ -66,13 +69,28 @@ export class AnimeService {
     this.status = "";
     this.type = "";
     this.genres = "";
-    this.getAnimes(1);
+    this.page.next(1);         
+    this.getAnimes(this.page.getValue()) 
   }
 
   getCharacters(animeId:Number) {
     this.httpclient.get<ApiResponse>(`${this.baseUrl}/${animeId}/characters`).subscribe(result => {
       this.characters.next(result.data);
     });
+  }
+
+  nextPage() {
+    const currentPage = this.page.getValue();
+    const newPage = currentPage + 1;          
+    this.page.next(newPage);         
+    this.getAnimes(this.page.getValue())         
+  }
+
+  previusPage() {
+    const currentPage = this.page.getValue();
+    const newPage = currentPage - 1;          
+    this.page.next(newPage);            
+    this.getAnimes(this.page.getValue())         
   }
 
 }

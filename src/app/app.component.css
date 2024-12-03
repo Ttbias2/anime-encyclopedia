@@ -8,16 +8,21 @@ nav {
     background-color: #1c0e24;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 15px;
+    position: sticky;
+    top: 0;
+    animation: small;
+    animation-timeline: scroll(root);
+    z-index: 20;
 }
 
-#fetch{
+#fetch {
     margin-left: 20px;
-    display: flex; 
+    display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-#fetch input{
+#fetch input {
     height: 38px;
     width: 250px;
     font-size: 25px;
@@ -27,7 +32,7 @@ nav {
     background-color: #4a2b5a;
 }
 
-#text{
+#text {
     background-color: #4a2b5a;
     margin: 0;
     border-bottom-left-radius: 0px;
@@ -48,6 +53,7 @@ label {
 
 #filt {
     display: flex;
+    margin-bottom: 10px;
 }
 
 .base {
@@ -83,4 +89,19 @@ label {
 
 input {
     font-family: 'general';
+}
+
+@keyframes small {
+    0% {
+        transform: translateY(0%);
+    }
+
+
+    50% {
+        transform: translateY(-65%);
+    }
+
+    100% {
+        transform: translateY(-65%);
+    }
 }

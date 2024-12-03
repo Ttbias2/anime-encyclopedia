@@ -1,4 +1,4 @@
-<button id="back" routerLink="/home">Back</button>
+<button id="back" routerLink="/home" (click)="scrollToTop()">Back</button>
 <div style="display: flex; align-items: center; justify-content: center;">
 @for (a of anime; track a.mal_id) {
 @if (a.title==animeTittle) {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AnimeService } from '../anime.service';
 import { AnimeData, AnimeResponse } from '../common/anime';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-animes',
@@ -18,7 +18,10 @@ export class AnimesComponent implements OnInit{
   constructor(private service: AnimeService,private router:Router) {}
 
   ngOnInit(): void {
-    this.service.getAnimes(1);
+
+    this.service.page$.subscribe(page=>{this.page=page});
+
+    this.service.getAnimes(this.page);
 
     this.service.animes$.subscribe((animeList) => {
       this.animes = animeList;
@@ -27,20 +30,20 @@ export class AnimesComponent implements OnInit{
 
   nextPage()
   {
+    this.scrollToTop();
+
     if(this.animes.length == 20){
-      this.page++;
-      this.service.getAnimes(this.page)  
+      this.service.nextPage();
     }
     
-    this.scrollToTop();
+    
   }
 
   previusPage()
   {
     if(this.page!=1)
     {
-      this.page--;
-      this.service.getAnimes(this.page)
+      this.service.previusPage();
     }
 
     this.scrollToTop();
