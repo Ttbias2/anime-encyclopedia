@@ -62,8 +62,7 @@ label {
     position: absolute;
     transition: transform 0.3s ease;
     background-color: #281731;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+    border-radius: 15px;
 }
 
 #genres {

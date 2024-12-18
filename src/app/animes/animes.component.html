@@ -1,6 +1,6 @@
 
 <div id="container">
-    <div id="containerAnimes" class="flexRow">
+    <div id="containerAnimes">
         @for (anime of animes; track anime.mal_id) {
         <div class="anime" routerLink="/anime/{{anime.title}}/{{anime.mal_id}}" (click)="scrollToTop()">
             <img src="{{anime.images.jpg.image_url}}" alt="Can't find the image">
